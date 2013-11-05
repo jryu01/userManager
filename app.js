@@ -11,7 +11,11 @@ var mongoose = require('mongoose');
 
 
 //Bootstrap db connection
-mongoose.connect('mongodb://localhost/userManager');
+var uristring = 
+process.env.MONGOLAB_URI || 
+process.env.MONGOHQ_URL || 
+'mongodb://localhost/userManager';
+mongoose.connect(uristring);
 
 //Bootstrap models
 var models_path = __dirname + '/models';
@@ -24,7 +28,7 @@ var user = require('./routes/user');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
