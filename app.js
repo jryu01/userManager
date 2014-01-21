@@ -54,6 +54,7 @@ app.all('/api/*', function(req, res, next){
   res.header("Content-Type", "application/json");
   next();
 });
+
 app.get('/api/users', user.list);
 app.get('/api/users/:id', user.detail);
 app.post('/api/users', user.create);
