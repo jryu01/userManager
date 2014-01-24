@@ -48,10 +48,17 @@ if ('development' == app.get('env')) {
 //app.get('/', routes.index);
 
 //Restfull API Routes
-app.all('/api/*', function(req, res, next){
+//app.all('/api/*', function(req, res, next){
+//  res.header("Access-Control-Allow-Origin", "*");
+//  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+//	res.header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+//  res.header("Content-Type", "application/json");
+//  next();
+//});
+
+app.all('*', function(req, res, next){
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
-	res.header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header("Content-Type", "application/json");
   next();
 });
